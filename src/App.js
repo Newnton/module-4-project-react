@@ -49,8 +49,8 @@ class App extends Component {
     return(
     <Router>
        <div>
-         <Route exact path="/" component={Auth(ListingsContainer, this.state.auth.headers)} />
-         <Route path="/login" render={() => this.state.auth.isLoggedIn ? <Redirect to="/" /> : <Login onSendLogin={this.onLogin.bind(this)} />} />
+         <Route exact path="/listings" component={Auth(ListingsContainer, this.state.auth.headers)}  />
+         <Route path="/login" render={() => this.state.auth.isLoggedIn ? <Redirect to="/listings" /> : <Login onSendLogin={this.onLogin.bind(this)} />} />
          <Route path="/listings/new" render={() => <ListingForm />} />
       </div>
     </Router>
