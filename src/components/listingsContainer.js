@@ -13,7 +13,6 @@ constructor(){
   }
 }
 
-
   componentDidMount(){
     fetch(`http://localhost:3000/api/v1/listings`, {
       headers: {
@@ -24,7 +23,6 @@ constructor(){
     })
     .then(res => res.json())
     .then(listings => this.setState({ listings }))
-
   }
 
 

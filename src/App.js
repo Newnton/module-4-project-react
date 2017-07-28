@@ -4,10 +4,11 @@ import ListingsContainer from './components/listingsContainer'
 import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Login from './components/loginForm'
 import Auth from './auth/authorize'
+import ListingForm from './components/listingForm'
 
 class App extends Component {
 
-  state={
+  state = {
     auth: {
       isLoggedIn: false,
       user: '',
@@ -50,6 +51,7 @@ class App extends Component {
        <div>
          <Route exact path="/" component={Auth(ListingsContainer, this.state.auth.headers)} />
          <Route path="/login" render={() => this.state.auth.isLoggedIn ? <Redirect to="/" /> : <Login onSendLogin={this.onLogin.bind(this)} />} />
+         <Route path="/listings/new" render={() => <ListingForm />} />
       </div>
     </Router>
   )
