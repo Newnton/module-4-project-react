@@ -10,6 +10,7 @@ constructor(){
     listings: null,
     filters: [],
     currentFilters: []
+    // photosUrls: ['http://i.imgur.com/rEmEGda.jpg', 'http://i.imgur.com/2pQzOnX.png', 'http://i.imgur.com/w4gpsgH.jpg', 'http://i.imgur.com/4a8So6N.jpg', 'http://i.imgur.com/jQ67HfQ.jpg', 'http://i.imgur.com/ktUANJ5.jpg']
   }
 }
 

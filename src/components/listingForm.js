@@ -5,13 +5,13 @@ import { Button, Form } from 'semantic-ui-react'
 export default class ListingForm extends Component {
 
   state = {
+    apt_type: '',
     address: '',
     zipcode: 0,
     bedrooms: 0,
     bathrooms: 0,
     sqft: 0,
     price: 0.0,
-    type: '',
     description: ''
   }
 
@@ -25,6 +25,7 @@ export default class ListingForm extends Component {
   }
 
   handleSubmit = () => {
+    console.log(this.state);
     fetch('http://localhost:3000/api/v1/listings/new', {
       method: 'POST',
       body: JSON.stringify(this.state),
@@ -38,7 +39,6 @@ export default class ListingForm extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
@@ -92,8 +92,8 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Type</label>
           <input
-            name='type'
-            placeholder='Type'
+            name='apt_type'
+            placeholder='Apt Type'
             onChange={this.handleInputChange}
           />
         </Form.Field>
