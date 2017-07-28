@@ -6,7 +6,7 @@ export default class ListingForm extends Component {
 
   state = {
     address: '',
-    zipcode: '',
+    zipcode: 0,
     bedrooms: 0,
     bathrooms: 0,
     sqft: 0,
@@ -18,10 +18,6 @@ export default class ListingForm extends Component {
   handleInputChange = (event) => {
     const name = event.target.name
     const value = event.target.value
-
-    if (typeof value === 'string'){
-      value.toString(value)
-    }
 
     this.setState({
       [name]: value
@@ -56,6 +52,7 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Zipcode</label>
           <input type='number'
+            name='zipcode'
             placeholder='Zipcode'
             onChange={this.handleInputChange}
           />
@@ -63,6 +60,7 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Bedrooms</label>
           <input type='number'
+            name='bedrooms'
             placeholder='Bedrooms'
             onChange={this.handleInputChange}
           />
@@ -70,6 +68,7 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Bathrooms</label>
           <input type='number'
+            name='bathrooms'
             placeholder='Bathrooms'
             onChange={this.handleInputChange}
           />
@@ -77,13 +76,15 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Square Footage</label>
           <input type='number'
+            name='sqft'
             placeholder='Sqft'
             onChange={this.handleInputChange}
           />
         </Form.Field>
         <Form.Field>
-          <label>Price</label>
+          <label>Price $</label>
           <input type='number' step='0.01'
+            name='price'
             placeholder='Price'
             onChange={this.handleInputChange}
           />
@@ -91,6 +92,7 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Type</label>
           <input
+            name='type'
             placeholder='Type'
             onChange={this.handleInputChange}
           />
@@ -98,6 +100,7 @@ export default class ListingForm extends Component {
         <Form.Field>
           <label>Description</label>
           <input
+            name='description'
             placeholder='Description'
             onChange={this.handleInputChange}
           />
