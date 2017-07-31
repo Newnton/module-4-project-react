@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ListingsList from './listingsList'
+import { Grid }from 'semantic-ui-react'
 
 class ListingsContainer extends Component{
 
@@ -26,12 +27,32 @@ constructor(){
     .then(listings => this.setState({ listings }))
   }
 
-
+  pricify = (price) => {
+    let numArr = price.split("")
+    let i = numArr.length - 1
+    while (i > -1) {
+      i -= 3
+      numArr.splice(i, 0, ",")
+      i--
+    }
+    return numArr.join("")
+  }
 
   render(){
     console.log(this.state)
     return(
-      <ListingsList listings={this.state.listings}  />
+      <Grid padded>
+        <Grid.Column width={10}>
+          <ListingsList
+            listings={this.state.listings}
+            prices={this.state.listings}
+            pricify={this.pricify}
+          />
+        </Grid.Column>
+        <Grid.Column>
+
+        </Grid.Column>
+      </Grid>
     )
   }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
+
 
 class LoginForm extends Component {
 
@@ -14,12 +16,10 @@ class LoginForm extends Component {
   }
 
   handleChange (e) {
-    console.log(e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })
   }
-  // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit (e) {
     e.preventDefault()
@@ -29,18 +29,22 @@ class LoginForm extends Component {
 
   render () {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-          <label>Username</label>
-          <input name='username' placeholder='Username' onChange={this.handleChange} />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
-        </Form.Field>
-        <Button type='submit'>Log In</Button>
-      </Form>
-
+      <div>
+        {this.props.isLoggedIn() ?
+          <Redirect to='/listings'/> :
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Username</label>
+              <input name='username' placeholder='Username' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
+            </Form.Field>
+            <Button type='submit'>Log In</Button>
+          </Form>
+        }
+      </div>
     )
   }
 }

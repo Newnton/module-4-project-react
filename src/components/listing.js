@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image, Statistic } from 'semantic-ui-react'
 
 // const extra = (
 //   <a>
@@ -18,8 +18,8 @@ import { Button, Card, Image } from 'semantic-ui-react'
 //   />
 // )
 
+const Listing = ({listing, price, pricify}) => (
 
-const Listing = ({listing}) => (
   <Card>
     <Image src='http://i.imgur.com/rEmEGda.jpg' />
     <Card.Content>
@@ -30,7 +30,10 @@ const Listing = ({listing}) => (
         {listing.zipcode}
       </Card.Meta>
       <Card.Description>
-        {listing.description}
+        {/* <Statistic.Value>${pricify(price)}</Statistic.Value> */}
+      </Card.Description>
+      <Card.Description>
+        {listing.description.length > 119 ? listing.description.slice(0, 119) + '...' : listing.description}
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
