@@ -24,7 +24,7 @@ constructor(){
       }
     })
     .then(res => res.json())
-    .then(listings => this.setState({ listings }))
+    .then(listings => this.setState({ listings: listings.listing }))
   }
 
   pricify = (price) => {
