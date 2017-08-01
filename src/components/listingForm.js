@@ -12,7 +12,10 @@ export default class ListingForm extends Component {
     bathrooms: 0,
     sqft: 0,
     price: 0.0,
-    description: ''
+    description: '',
+    image_url_1: '',
+    image_url_2: '',
+    image_url_3: ''
   }
 
   handleInputChange = (event) => {

@@ -1,21 +1,22 @@
 import React, {Component} from 'react'
 import ListingsList from './listingsList'
 import { Grid }from 'semantic-ui-react'
+import { Route } from 'react-router-dom'
+import ListingShow from './ListingShow'
+import PropTypes from 'prop-types'
 
-class ListingsContainer extends Component{
+class ListingsContainer extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
-constructor(){
-  super()
-
-  this.state = {
-    listings: null,
+  state = {
+    listings: [],
     filters: [],
     currentFilters: []
-    // photosUrls: ['http://i.imgur.com/rEmEGda.jpg', 'http://i.imgur.com/2pQzOnX.png', 'http://i.imgur.com/w4gpsgH.jpg', 'http://i.imgur.com/4a8So6N.jpg', 'http://i.imgur.com/jQ67HfQ.jpg', 'http://i.imgur.com/ktUANJ5.jpg']
   }
-}
 
-  componentDidMount(){
+  componentWillMount(){
     fetch(`http://localhost:3000/api/v1/listings`, {
       headers: {
         'content-type': 'application/json',
@@ -24,37 +25,35 @@ constructor(){
       }
     })
     .then(res => res.json())
-    .then(listings => this.setState({ listings: listings.listing }))
+    .then(res => {
+      this.setState({ listings: res.listing })
+    })
   }
 
-  pricify = (price) => {
-    let numArr = price.split("")
-    let i = numArr.length - 1
-    while (i > -1) {
-      i -= 3
-      numArr.splice(i, 0, ",")
-      i--
-    }
-    return numArr.join("")
-  }
+  render() {
+    const idUrl = this.context.router.history.location.pathname
+    const showListing = this.state.listings.find(listing => {
+      return listing.id == idUrl.split("/")[idUrl.split('/').length - 1]
+    })
 
-  render(){
-    console.log(this.state)
     return(
       <div>
         <h1 style={{textAlign: 'center'}}>Listings</h1>
-        <Grid padded>
+        <Grid padded divided>
           <Grid.Column width={10}>
-            <ListingsList
-              listings={this.state.listings}
-              prices={this.state.listings}
-              pricify={this.pricify}
-            />
+            <Route path='/listings' render={() => (
+              <ListingsList
+                listings={this.state.listings}
+                changeListing={this.changeSelectedListing}
+              />
+            )}/>
           </Grid.Column>
-          <Grid.Column>
-
+          <Grid.Column width={6}>
+            <Route path='/listings/:id' render={() => (
+              <div>{!!showListing ? <ListingShow listing={showListing} /> : null}</div>
+            )}/>
           </Grid.Column>
-      </Grid>
+        </Grid>
       </div>
     )
   }
