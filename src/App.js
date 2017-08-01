@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import AuthAdapter from './auth/authAdapter'
-import ListingsContainer from './components/listingsContainer'
-import { Route, Redirect, NavLink } from 'react-router-dom'
-import Login from './components/loginForm'
-import Auth from './auth/authorize'
-import UserForm from './components/userForm'
-import ListingForm from './components/listingForm'
-import { Menu, Segment } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
+import { Route, Redirect, NavLink } from 'react-router-dom'
+import { Menu, Segment } from 'semantic-ui-react'
+import AuthAdapter from './auth/authAdapter'
+import Auth from './auth/authorize'
+<<<<<<< HEAD
+import UserForm from './components/userForm'
+=======
+import Login from './components/loginForm'
+import ListingsContainer from './components/listingsContainer'
+>>>>>>> 108d6f62b36fa9985cfec4e8feeeca7f300912c9
+import ListingForm from './components/listingForm'
+import UserContainer from './components/userContainer'
 
 class App extends Component {
   static contextTypes = {
@@ -49,6 +53,7 @@ class App extends Component {
         <Menu pointing secondary>
           <Menu.Item active={this.activeItem('/listings')}><NavLink to="/listings">Listings</NavLink></Menu.Item>
           <Menu.Item active={this.activeItem('/listings/new')}><NavLink to="/listings/new">Add Listing</NavLink></Menu.Item>
+          <Menu.Item active={this.activeItem('/dashboard')}><NavLink to="/dashboard">Dashboard</NavLink></Menu.Item>
           <Menu.Menu position='right'>
             {this.isLoggedIn() ? <Menu.Item name='logout' onClick={this.handleLogout.bind(this)}/> : <Menu.Item active={this.activeItem('/login')}><NavLink to="/login">Login</NavLink></Menu.Item>}
           </Menu.Menu>
@@ -60,7 +65,8 @@ class App extends Component {
             <Route path="/login" render={() => <Login onSendLogin={this.onLogin.bind(this)} isLoggedIn={this.isLoggedIn}/>} />
             <Route path="/listings/new" component={Auth(ListingForm)} />
             <Route path="/signup" render={() => <UserForm />}/>
-          </div>
+            <Route path="/dashboard" component={Auth(UserContainer)} />
+            </div>
         </Segment>
       </div>
     )
