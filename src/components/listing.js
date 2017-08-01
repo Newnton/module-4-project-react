@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const Listing = (props) => (
 
   <Card>
-    <Image src='http://i.imgur.com/rEmEGda.jpg' />
+    <Image src={listing.image_url_1} />
     <Card.Content>
       <Card.Header>
         {props.listing.address}

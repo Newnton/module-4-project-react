@@ -4,6 +4,7 @@ import { Route, Redirect, NavLink } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
 import AuthAdapter from './auth/authAdapter'
 import Auth from './auth/authorize'
+import UserForm from './components/userForm'
 import Login from './components/loginForm'
 import ListingsContainer from './components/listingsContainer'
 import ListingForm from './components/listingForm'
@@ -60,8 +61,9 @@ class App extends Component {
             <Route path="/listings" component={Auth(ListingsContainer, this.state.auth.headers)} />
             <Route path="/login" render={() => <Login onSendLogin={this.onLogin.bind(this)} isLoggedIn={this.isLoggedIn}/>} />
             <Route path="/listings/new" component={Auth(ListingForm)} />
+            <Route path="/signup" render={() => <UserForm />}/>
             <Route path="/dashboard" component={Auth(UserContainer)} />
-          </div>
+            </div>
         </Segment>
       </div>
     )

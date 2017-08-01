@@ -13,7 +13,7 @@ class ListingsContainer extends Component {
   state = {
     listings: [],
     filters: [],
-    currentFilters: [],
+    currentFilters: []
   }
 
   componentWillMount(){
