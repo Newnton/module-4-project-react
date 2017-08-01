@@ -1,27 +1,35 @@
 import React from 'react'
 import { Button, Card, Image, Statistic } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
-const Listing = ({listing, price, pricify}) => (
+const Listing = (props) => (
 
   <Card>
     <Image src='http://i.imgur.com/rEmEGda.jpg' />
     <Card.Content>
       <Card.Header>
-      {listing.address}
+        {props.listing.address}
       </Card.Header>
       <Card.Meta>
-        {listing.zipcode}
+        {props.listing.zipcode}
       </Card.Meta>
       <Card.Description>
-        {/* <Statistic.Value>${pricify(price)}</Statistic.Value> */}
+        <Statistic.Value>${props.listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Statistic.Value>
       </Card.Description>
       <Card.Description>
-        {listing.description.length > 119 ? listing.description.slice(0, 119) + '...' : listing.description}
+        {props.listing.description.length > 119 ? props.listing.description.slice(0, 119) + '...' : props.listing.description}
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
 
+      <Button.Group>
         <Button basic color='green'>Add to Favorites</Button>
+        <Button>
+          <NavLink
+            to={`/listings/${props.listing.id}`}> View
+          </NavLink>
+        </Button>
+      </Button.Group>
 
     </Card.Content>
   </Card>
