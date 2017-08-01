@@ -30,66 +30,31 @@ class ListingsContainer extends Component {
     })
   }
 
-  renderWithState = () => {
-    debugger
-    return (
-      <Grid padded>
-        <Grid.Column width={10}>
-          <Route path='/listings' render={() => (
-            <ListingsList
-              listings={this.state.listings}
-              changeListing={this.changeSelectedListing}
-            />
-          )}/>
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <Route path='/listings/:id' render={() => (
-            <ListingShow listing={this.state.currentListing} />
-          )}/>
-        </Grid.Column>
-      </Grid>
-    )
-  }
-
-
-  renderWithOutState = () => {
-    return (
-    <Grid padded>
-      <Grid.Column width={10}>
-        <Route path='/listings' render={() => (
-          <ListingsList
-            listings={this.state.listings}
-            changeListing={this.changeSelectedListing}
-          />
-        )}/>
-      </Grid.Column>
-    </Grid>
-    )
-  }
-
   render() {
-
     const idUrl = this.context.router.history.location.pathname
     const showListing = this.state.listings.find(listing => {
       return listing.id == idUrl.split("/")[idUrl.split('/').length - 1]
     })
 
     return(
-      <Grid padded divided>
-        <Grid.Column width={10}>
-          <Route path='/listings' render={() => (
-            <ListingsList
-              listings={this.state.listings}
-              changeListing={this.changeSelectedListing}
-            />
-          )}/>
-        </Grid.Column>
-        <Grid.Column width={6}>
-          <Route path='/listings/:id' render={() => (
-            <div>{!!showListing ? <ListingShow listing={showListing} /> : null}</div>
-          )}/>
-        </Grid.Column>
-      </Grid>
+      <div>
+        <h1 style={{textAlign: 'center'}}>Listings</h1>
+        <Grid padded divided>
+          <Grid.Column width={10}>
+            <Route path='/listings' render={() => (
+              <ListingsList
+                listings={this.state.listings}
+                changeListing={this.changeSelectedListing}
+              />
+            )}/>
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <Route path='/listings/:id' render={() => (
+              <div>{!!showListing ? <ListingShow listing={showListing} /> : null}</div>
+            )}/>
+          </Grid.Column>
+        </Grid>
+      </div>
     )
   }
 

@@ -21,16 +21,14 @@ const Listing = (props) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-
       <Button.Group>
-        <Button basic color='green'>Add to Favorites</Button>
+        <Button onClick={()=>addFavorite(listing.id)} basic color='green'>Add to Favorites</Button>
         <Button>
           <NavLink
             to={`/listings/${props.listing.id}`}> View
           </NavLink>
         </Button>
       </Button.Group>
-
     </Card.Content>
   </Card>
 
