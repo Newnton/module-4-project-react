@@ -12,7 +12,10 @@ export default class ListingForm extends Component {
     bathrooms: 0,
     sqft: 0,
     price: 0.0,
-    description: ''
+    description: '',
+    image_url_1: '',
+    image_url_2: '',
+    image_url_3: ''
   }
 
   handleInputChange = (event) => {
@@ -102,6 +105,30 @@ export default class ListingForm extends Component {
           <input
             name='description'
             placeholder='Description'
+            onChange={this.handleInputChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Link to Image 1</label>
+          <input
+            name='image_url_1'
+            placeholder='Image URL 1'
+            onChange={this.handleInputChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Link to Image 2</label>
+          <input
+            name='image_url_2'
+            placeholder='Image URL 2'
+            onChange={this.handleInputChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Link to Image 3</label>
+          <input
+            name='image_url_3'
+            placeholder='Image URL 3'
             onChange={this.handleInputChange}
           />
         </Form.Field>

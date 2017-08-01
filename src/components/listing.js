@@ -21,7 +21,7 @@ import { Button, Card, Image, Statistic } from 'semantic-ui-react'
 const Listing = ({listing, price, pricify}) => (
 
   <Card>
-    <Image src='http://i.imgur.com/rEmEGda.jpg' />
+    <Image src={listing.image_url_1} />
     <Card.Content>
       <Card.Header>
       {listing.address}
