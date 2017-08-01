@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ListingsList from './listingsList'
 import { Grid }from 'semantic-ui-react'
-import Search from './search'
 
 class ListingsContainer extends Component{
 
@@ -43,7 +42,6 @@ constructor(){
     return(
       <Grid padded>
         <Grid.Column width={10}>
-          <Search />
           <ListingsList
             listings={this.state.listings}
             prices={this.state.listings}
