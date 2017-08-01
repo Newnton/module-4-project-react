@@ -49,7 +49,7 @@ class App extends Component {
       <div>
         <Menu pointing secondary>
           <Menu.Item active={this.activeItem('/listings')}><NavLink to="/listings">Listings</NavLink></Menu.Item>
-          <Menu.Item active={this.activeItem('/listings/new')}><NavLink to="/listings/new">Add Listing</NavLink></Menu.Item>
+          <Menu.Item active={this.activeItem('/new/listing')}><NavLink to="/new/listing">Add Listing</NavLink></Menu.Item>
           <Menu.Item active={this.activeItem('/dashboard')}><NavLink to="/dashboard">Dashboard</NavLink></Menu.Item>
           <Menu.Menu position='right'>
             {this.isLoggedIn() ? <Menu.Item name='logout' onClick={this.handleLogout.bind(this)}/> : <Menu.Item active={this.activeItem('/login')}><NavLink to="/login">Login</NavLink></Menu.Item>}
@@ -60,7 +60,7 @@ class App extends Component {
           <div style={{margin: '0 auto'}}>
             <Route path="/listings" component={Auth(ListingsContainer, this.state.auth.headers)} />
             <Route path="/login" render={() => <Login onSendLogin={this.onLogin.bind(this)} isLoggedIn={this.isLoggedIn}/>} />
-            <Route path="/listings/new" component={Auth(ListingForm)} />
+            <Route path="/new/listing" component={Auth(ListingForm)} />
             <Route path="/signup" render={() => <UserForm />}/>
             <Route path="/dashboard" component={Auth(UserContainer)} />
             </div>

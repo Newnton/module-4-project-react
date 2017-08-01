@@ -13,9 +13,7 @@ export default class ListingForm extends Component {
     sqft: 0,
     price: 0.0,
     description: '',
-    image_url_1: '',
-    image_url_2: '',
-    image_url_3: ''
+    image_url: ''
   }
 
   handleInputChange = (event) => {
@@ -110,6 +108,14 @@ export default class ListingForm extends Component {
               onChange={this.handleInputChange}
             />
           </Form.Field>
+          <Form.Field>
+            <label>Link to Image</label>
+            <input
+              name='image_url'
+              placeholder='Image URL'
+              onChange={this.handleInputChange}
+            />
+        </Form.Field>
           <Button>Submit</Button>
         </Form>
       </div>

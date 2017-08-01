@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 export default class UserForm extends Component{
   static contextTypes = {
-      router: PropTypes.object
-    }
+    router: PropTypes.object
+  }
 
   state = {
     username: '',
@@ -33,8 +33,10 @@ export default class UserForm extends Component{
       },
       body: JSON.stringify(this.state)})
     .then(res => res.json())
-    .then(res => {localStorage.setItem('jwt', res.jwt)
-      this.context.router.history.push('/listings')})
+    .then(res => {
+      localStorage.setItem('jwt', res.jwt)
+      this.context.router.history.push('/listings')
+    })
   }
 
   render(){

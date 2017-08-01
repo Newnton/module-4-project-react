@@ -30,27 +30,31 @@ class ListingsContainer extends Component {
     })
   }
 
-  render() {
+  displayListing() {
     const idUrl = this.context.router.history.location.pathname
-    const showListing = this.state.listings.find(listing => {
+    const corn = this.state.listings.find(listing => {
       return listing.id == idUrl.split("/")[idUrl.split('/').length - 1]
     })
+    return corn
+  }
+
+  render() {
+
 
     return(
       <div>
-        <h1 style={{textAlign: 'center'}}>Listings</h1>
         <Grid padded divided>
           <Grid.Column width={10}>
             <Route path='/listings' render={() => (
+              <div><h1 style={{textAlign: 'center'}}>Listings</h1>
               <ListingsList
                 listings={this.state.listings}
-                changeListing={this.changeSelectedListing}
-              />
+              /></div>
             )}/>
           </Grid.Column>
           <Grid.Column width={6}>
-            <Route path='/listings/:id' render={() => (
-              <div>{!!showListing ? <ListingShow listing={showListing} /> : null}</div>
+            <Route path='/listings/show/:id' render={() => (
+              <ListingShow listing={this.displayListing()}/>
             )}/>
           </Grid.Column>
         </Grid>

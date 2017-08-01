@@ -3,6 +3,7 @@ import { Card } from 'semantic-ui-react'
 import Listing from './listing'
 
 const ListingsList = (props) => {
+  console.log(props)
   const addFavorite = (listingId) => {
     console.log(listingId)
     fetch('http://localhost:3000/api/v1/saved/new', {
@@ -18,13 +19,16 @@ const ListingsList = (props) => {
   }
   return(
     <Card.Group itemsPerRow={3}>
-      {props.listings !== null ? props.listings.map((listing) => {
-        return <Listing
-          listing={listing}
-          price={listing.price}
-          addFavorite={props.addFavorite}
-        />
-      }) : null}
+      {props.listings !== null ?
+        props.listings.map((listing) => (
+          <Listing
+            listing={listing}
+            price={listing.price}
+            addFavorite={props.addFavorite}
+          />
+      )) :
+      null
+    }
     </Card.Group>
   )
 }

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const Listing = (props) => (
 
   <Card>
-    <Image src={listing.image_url_1} />
+    <Image src={props.listing.image_url} />
     <Card.Content>
       <Card.Header>
         {props.listing.address}
@@ -22,10 +22,10 @@ const Listing = (props) => (
     </Card.Content>
     <Card.Content extra>
       <Button.Group>
-        <Button onClick={()=>addFavorite(listing.id)} basic color='green'>Add to Favorites</Button>
+        <Button onClick={()=>props.addFavorite(props.listing.id)} basic color='green'>Add to Favorites</Button>
         <Button>
           <NavLink
-            to={`/listings/${props.listing.id}`}> View
+            to={`/listings/show/${props.listing.id}`}> View
           </NavLink>
         </Button>
       </Button.Group>

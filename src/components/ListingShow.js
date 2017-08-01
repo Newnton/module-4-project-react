@@ -2,9 +2,11 @@ import React from 'react'
 import { Card, Image, Statistic, Button } from 'semantic-ui-react'
 
 const ListingShow = (props) => {
+  console.dir(props.listing)
+  if (props.listing){
   return (
     <Card>
-      <Image src='http://i.imgur.com/rEmEGda.jpg' />
+      <Image src={props.listing.image_url} />
       <Card.Content>
         <Card.Header>
           {props.listing.address}
@@ -20,7 +22,7 @@ const ListingShow = (props) => {
         </Card.Description>
       </Card.Content>
     </Card>
-  )
+  )} else {return null}
 }
 
 export default ListingShow
