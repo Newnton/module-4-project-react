@@ -41,18 +41,21 @@ constructor(){
   render(){
     console.log(this.state)
     return(
-      <Grid padded>
-        <Grid.Column width={10}>
-          <ListingsList
-            listings={this.state.listings}
-            prices={this.state.listings}
-            pricify={this.pricify}
-          />
-        </Grid.Column>
-        <Grid.Column>
+      <div>
+        <h1 style={{textAlign: 'center'}}>Listings</h1>
+        <Grid padded>
+          <Grid.Column width={10}>
+            <ListingsList
+              listings={this.state.listings}
+              prices={this.state.listings}
+              pricify={this.pricify}
+            />
+          </Grid.Column>
+          <Grid.Column>
 
-        </Grid.Column>
+          </Grid.Column>
       </Grid>
+      </div>
     )
   }
 

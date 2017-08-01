@@ -30,6 +30,7 @@ class LoginForm extends Component {
   render () {
     return (
       <div>
+        <h1 style={{textAlign: 'center'}}>Login</h1>
         {this.props.isLoggedIn() ?
           <Redirect to='/listings'/> :
           <Form onSubmit={this.handleSubmit}>
