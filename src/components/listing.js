@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card, Image, Statistic } from 'semantic-ui-react'
 
-const Listing = ({listing, price, pricify}) => (
+const Listing = ({listing, price, pricify, addFavorite}) => (
 
   <Card>
     <Image src='http://i.imgur.com/rEmEGda.jpg' />
@@ -21,7 +21,7 @@ const Listing = ({listing, price, pricify}) => (
     </Card.Content>
     <Card.Content extra>
 
-        <Button basic color='green'>Add to Favorites</Button>
+        <Button onClick={()=>addFavorite(listing.id)} basic color='green'>Add to Favorites</Button>
 
     </Card.Content>
   </Card>
