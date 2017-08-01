@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import { Button, Form } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+
 
 export default class UserForm extends Component{
+  static contextTypes = {
+      router: PropTypes.object
+    }
 
   state = {
     username: '',
@@ -28,7 +33,8 @@ export default class UserForm extends Component{
       },
       body: JSON.stringify(this.state)})
     .then(res => res.json())
-    .then(res => console.log(res))
+    .then(res => {localStorage.setItem('jwt', res.jwt)
+      this.context.router.history.push('/listings')})
   }
 
   render(){

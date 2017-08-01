@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 
 
 class LoginForm extends Component {
@@ -42,8 +42,12 @@ class LoginForm extends Component {
               <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
             </Form.Field>
             <Button type='submit'>Log In</Button>
+          <NavLink to="/signup">  <Button> Sign Up </Button></NavLink>
           </Form>
         }
+
+
+
       </div>
     )
   }
