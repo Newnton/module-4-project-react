@@ -4,12 +4,9 @@ import { Route, Redirect, NavLink } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
 import AuthAdapter from './auth/authAdapter'
 import Auth from './auth/authorize'
-<<<<<<< HEAD
 import UserForm from './components/userForm'
-=======
 import Login from './components/loginForm'
 import ListingsContainer from './components/listingsContainer'
->>>>>>> 108d6f62b36fa9985cfec4e8feeeca7f300912c9
 import ListingForm from './components/listingForm'
 import UserContainer from './components/userContainer'
 
